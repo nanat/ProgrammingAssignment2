@@ -1,9 +1,9 @@
 ## makeCacheMatrix creates a special matrix
-## thas is actually a list containing functions to:
-## set the value of the matrix
-## get the value of the matrix
-## set the inverted matrix
-## get the inverted matrix
+## thas is a list containing functions to:
+## - set the value of the matrix
+## - get the value of the matrix
+## - set the inverted matrix
+## - get the inverted matrix
 makeCacheMatrix <- function(mat = matrix()) {
   inv <- NULL
   
@@ -11,11 +11,8 @@ makeCacheMatrix <- function(mat = matrix()) {
     mat <<- y
     inv <<- NULL
   }
-  
   get <- function() mat
-  
   setInverse <- function(inverse) inv <<- inverse
-  
   getInverse <- function() inv
   
   list(set = set, 
@@ -26,10 +23,9 @@ makeCacheMatrix <- function(mat = matrix()) {
 
 
 ## cacheSolve returns a matrix that is the inverse of the input 'matrix'
-## If the inverted matrix is not yet solved, it will be calculated and returned
+## if the inverted matrix is not yet solved, it will be calculated and returned
 ## otherwise, it will be just returned
 cacheSolve <- function(matrix, ...) {
-        
   inverse <- matrix$getInverse()
   
   if (is.null(inverse)) {
